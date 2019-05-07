@@ -15,3 +15,20 @@ Score: 615
 4. `yarn` or `npm i`
 5. `node ./index.js`
 6. Your score already front of you
+
+### Lib version
+1. `npm i clear-score`
+2. Use
+```js
+const getClearScore = require('clear-score')
+
+getClearScore({
+  login,
+  pass
+}).then(score => {
+  console.log('Report date:', score.report_data)
+  console.log('Days until new:', score.updated_date)
+  console.log('Score:', score.score)
+  console.log('Report:', score.report)
+})
+```
