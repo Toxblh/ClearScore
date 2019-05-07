@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://img.shields.io/npm/v/clear-score.svg)](https://www.npmjs.com/package/clear-score)
+[![License](https://img.shields.io/npm/l/clear-score.svg)](https://www.npmjs.com/package/clear-score)
+[![NPM Downloads](https://img.shields.io/npm/dt/clear-score.svg)](https://www.npmjs.com/package/clear-score)
+
 # Collect credit score from clearscore.com
 A simple way to collect your score from clearscore.com
 
