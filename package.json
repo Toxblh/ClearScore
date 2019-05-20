@@ -5,6 +5,7 @@
   },
   "version": "1.0.1",
   "main": "lib.js",
+  "typings" : "lib.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
