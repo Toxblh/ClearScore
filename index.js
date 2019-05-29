@@ -3,7 +3,7 @@ const creds = require('./creds')
 
 getClearScore({
   login: creds.login,
-  pass: creds.pass
+  pass: creds.pass,
 }).then(score => {
   console.log('Report date:', score.report_data)
   console.log('Days until new:', score.updated_date)

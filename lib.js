@@ -8,9 +8,9 @@ async function getClearScore({ login, pass }) {
 
   page.on('response', response => {
     if (response.url() === 'https://app.clearscore.com/api/gb/report-viewer/v2/report') {
-      response.json().then(report => userReport = report)
+      response.json().then(report => (userReport = report))
     }
-  });
+  })
 
   await page.goto('https://app.clearscore.com/login', { waitUntil: 'networkidle2' })
   await page.waitFor(1000)
@@ -32,7 +32,7 @@ async function getClearScore({ login, pass }) {
     report_data: userReport.overview.reportDate,
     updated_date: userReport.overview.daysUntilNextReport,
     score: userReport.overview.score.score,
-    report: userReport
+    report: userReport,
   }
 
   await browser.close()
