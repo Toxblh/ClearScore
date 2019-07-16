@@ -35,7 +35,7 @@ getClearScore({
   login,
   pass,
 }).then(score => {
-  console.log('Report date:', score.report_data)
+  console.log('Report date:', score.report_date)
   console.log('Days until new:', score.updated_date)
   console.log('Score:', score.score)
   console.log('Report:', score.report)
