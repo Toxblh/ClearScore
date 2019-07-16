@@ -29,7 +29,7 @@ async function getClearScore({ login, pass }) {
   await page.goto('https://app.clearscore.com/report', { waitUntil: 'networkidle2' })
 
   const output = {
-    report_data: userReport.overview.reportDate,
+    report_date: userReport.overview.reportDate,
     updated_date: userReport.overview.daysUntilNextReport,
     score: userReport.overview.score.score,
     report: userReport,

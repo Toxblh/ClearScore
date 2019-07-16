@@ -155,7 +155,7 @@ type UserReport = {
 }
 
 type ClearScoreOutput = {
-  report_data: string
+  report_date: string
   updated_date: string
   score: number
   report: UserReport
