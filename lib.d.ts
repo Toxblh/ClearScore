@@ -161,4 +161,7 @@ type ClearScoreOutput = {
   report: UserReport
 }
 
-declare function getClearScore(creds: { login: string; pass: string }): Promise<ClearScoreOutput>
+declare function getClearScore(creds: {
+  login: string
+  pass: string
+}): Promise<ClearScoreOutput>
