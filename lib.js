@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer')
 async function getClearScore({ login, pass }) {
   let userReport
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({args: ['--no-sandbox']})
   const page = await browser.newPage()
 
   page.on('response', response => {
