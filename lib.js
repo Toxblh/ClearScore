@@ -15,10 +15,10 @@ async function getClearScore({ login, pass }) {
   await page.goto('https://app.clearscore.com/login', { waitUntil: 'networkidle2' })
   await page.waitFor(1000)
 
-  await page.focus('input#loginform_email_input')
+  await page.focus('input[name=email]')
   await page.keyboard.type(login)
 
-  await page.focus('input#loginform_password_input')
+  await page.focus('input[name=password]')
   await page.keyboard.type(pass)
 
   const inputElement = await page.$('button[type=submit]')
