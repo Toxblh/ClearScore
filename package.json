@@ -12,6 +12,6 @@
     "url": "git+https://github.com/Toxblh/ClearScore.git"
   },
   "dependencies": {
-    "puppeteer": "^1.15.0"
+    "puppeteer": "^2.1.1"
   }
 }
