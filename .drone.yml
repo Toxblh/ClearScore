@@ -17,14 +17,14 @@ pipeline:
       - yarn config set cache-folder .yarn-cache
       - yarn install --pure-lockfile
 
-  testing:
-    image: node:lts
-    group: testing
-    commands:
-      - yarn run test
-
-  lint:
-    image: node:lts
-    group: testing
-    commands:
-      - yarn run lint
+#   lint:
+#     image: node:lts
+#     group: testing
+#     commands:
+#       - yarn run lint
+      
+#   build:
+#     image: node:lts
+#     group: testing
+#     commands:
+#       - yarn run build
