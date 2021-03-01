@@ -22,9 +22,15 @@ pipeline:
 #     group: testing
 #     commands:
 #       - yarn run lint
-      
+
 #   build:
 #     image: node:lts
 #     group: testing
 #     commands:
 #       - yarn run build
+
+trigger:
+  event:
+  - promote
+  target:
+  - production
