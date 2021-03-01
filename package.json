@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "puppeteer": "^5.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0"
   }
 }
