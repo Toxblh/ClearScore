@@ -3,11 +3,37 @@ type: docker
 name: build
 
 steps:
+
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
 - name: test
   image: node
   commands:
   - yarn
   - yarn eslint
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
 
 trigger:
   event:
@@ -25,6 +51,7 @@ steps:
   commands:
   - yarn
   - yarn eslint
+  - echo "Prod"
 
 trigger:
   event:
