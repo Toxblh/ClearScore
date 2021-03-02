@@ -46,15 +46,169 @@ type: docker
 name: deploy
 
 steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
 - name: test
   image: node
   commands:
   - yarn
   - yarn eslint
-  - echo "Prod"
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
 
 trigger:
   event:
   - promote
   target:
-  - production
+  - patch
+
+
+---
+kind: pipeline
+type: docker
+name: deploy
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
+- name: test
+  image: node
+  commands:
+  - yarn
+  - yarn minor
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
+
+trigger:
+  event:
+  - promote
+  target:
+  - minor
+
+---
+kind: pipeline
+type: docker
+name: deploy
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
+- name: test
+  image: node
+  commands:
+  - yarn
+  - yarn patch
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
+
+trigger:
+  event:
+  - promote
+  target:
+  - patch
+
+---
+kind: pipeline
+type: docker
+name: deploy
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
+- name: test
+  image: node
+  commands:
+  - yarn
+  - yarn major
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
+
+trigger:
+  event:
+  - promote
+  target:
+  - major
