@@ -87,7 +87,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: deploy
+name: publish minor
 
 steps:
 - name: restore-cache
@@ -130,7 +130,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: deploy
+name: publish patch
 
 steps:
 - name: restore-cache
@@ -173,7 +173,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: deploy
+name: Publish major
 
 steps:
 - name: restore-cache
