@@ -108,6 +108,26 @@ steps:
   - yarn
   - yarn minor
 
+- name: npm
+  image: plugins/npm
+  settings:
+    username:
+      from_secret: npm_username
+    password:
+      from_secret: npm_password
+    email:
+      from_secret: npm_email
+
+- name: push commit
+  image: appleboy/drone-git-push
+  settings:
+    ssh_key:
+      from_secret: git_ssh
+    branch: master
+    remote: git@github.com:Toxblh/ClearScore.git
+    commit: true
+    followtags: true
+
 - name: rebuild-cache
   image: drillster/drone-volume-cache
   volumes:
