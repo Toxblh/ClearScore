@@ -100,9 +100,11 @@ steps:
     mount:
       - ./node_modules
 
-- name: test
+- name: publish minor
   image: node
   commands:
+  - git config --global user.email "drone@toxblh.com"
+  - git config --global user.name "Drone CI"
   - yarn
   - yarn minor
 
